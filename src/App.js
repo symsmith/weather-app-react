@@ -11,11 +11,13 @@ class App extends React.Component {
       isLoaded: false,
       currentWeather: {}
     };
+    this.unitSystem = "metric";
     this.lat = "45.18410544710932";
     this.lon = "5.7225307355130255";
-    this.url = "https://api.openweathermap.org/data/2.5/weather?lat=" + this.lat +
-                "&lon=" + this.lon +
-                "&appid=" + apiKey;
+    this.url = "https://api.openweathermap.org/data/2.5/weather?lat=" + this.lat
+                + "&lon=" + this.lon
+                + "&units=" + this.unitSystem
+                + "&appid=" + apiKey;
   }
 
   componentDidMount() {
@@ -49,8 +51,7 @@ class App extends React.Component {
     else {
       return (
         <div className="App">
-      <Sidebar />
-    </div>
+          <Sidebar currentWeather={currentWeather} />
         </div>
       )
     }
