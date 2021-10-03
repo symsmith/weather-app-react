@@ -1,0 +1,64 @@
+.Sidebar {
+  width: 25%;
+  height: 100%;
+  background-color: #fff;
+  padding: 0 3em;
+}
+
+.currentWeatherIcon {
+  width: 100%;
+}
+
+h1 {
+  font-family: var(--numbers-font), sans-serif;
+  font-weight: 200;
+  font-size: 5em;
+  letter-spacing: -5px;
+  margin-bottom: 0em;
+  margin-top: -0.6em;
+}
+
+.feelsLike {
+  display: block;
+  margin-top: -10px;
+  letter-spacing: normal;
+  font-weight: 400;
+  font-size: 0.2em;
+  color: var(--dark-grey);
+}
+
+h2 {
+  font-weight: 400;
+  font-size: var(--base-font-size);
+}
+
+.hour {
+  color: var(--dark-grey);
+}
+
+hr {
+  border: 1px solid var(--light-grey);
+  border-width: 1px 0 1px 0;
+  height: 0px;
+  margin: 1.5em 0;
+}
+
+.weatherDescription {
+  font-size: calc(var(--base-font-size) - 0.2em);
+}
+
+.cityBox {
+  height: 5em;
+  margin-top: 2.5em;
+  font-size: var(--base-font-size);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8em;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  color: white;
+  background-color: #eb6f4c;
+}

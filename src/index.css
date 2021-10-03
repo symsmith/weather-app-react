@@ -1,17 +1,26 @@
 :root {
   --text-font: 'Poppins';
   --numbers-font: 'Inter';
+  --base-font-size: 1.2em;
+
   --light-grey: #f6f6f7;
   --dark-grey: #a4a6ac;
   --black: #1e1714;
+
+  height: 100%;
 }
 
 body {
   margin: 0;
+  height: 100%;
   font-family: var(--text-font), sans-serif;
   color: var(--black);
-  font-size: 1.2em;
+  font-size: var(--base-font-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
+}
+
+#root {
+  height: 100%;
 }
