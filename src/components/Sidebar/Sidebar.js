@@ -1,5 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
+import { getName, registerLocale } from 'i18n-iso-countries';
+registerLocale(require("i18n-iso-countries/langs/en.json"));
 
 class Sidebar extends React.Component {
   render() {
@@ -33,7 +35,7 @@ class Sidebar extends React.Component {
         <hr />
         <p className="weatherDescription">{weatherDescription}</p>
         <div className="cityBox">
-          <p>{weather.name}, {weather.sys.country}</p>
+          <p>{weather.name}, {getName(weather.sys.country, "en", {select: "alias"})}</p>
         </div>
       </div>
     );
