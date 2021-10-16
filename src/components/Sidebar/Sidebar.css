@@ -1,5 +1,5 @@
 .Sidebar {
-  @apply w-full px-9 pt-6 pb-10
+  @apply w-full px-9 py-6
         sm:px-14 sm:py-10
         lg:w-3/12 lg:h-screen lg:px-8 lg:py-7;
 }
@@ -30,13 +30,13 @@
 }
 
 h1 {
-  @apply text-8xl font-serif font-extralight
+  @apply text-8xl font-serif font-extralight tracking-tighter
         lg:text-7xl
         xl:text-8xl;
 }
 
 .feelsLike {
-  @apply font-sans text-lg font-light text-gray-400 block
+  @apply font-sans text-lg font-light text-gray-400 block tracking-normal
         lg:text-base
         xl:text-lg;
 }
@@ -57,7 +57,7 @@ h2 {
 }
 
 hr {
-  @apply my-8 border-gray-100 border-t-2
+  @apply my-6 border-gray-100 border-t-2
         sm:hidden
         lg:block;
 }

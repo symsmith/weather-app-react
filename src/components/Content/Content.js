@@ -8,6 +8,7 @@ class Content extends React.Component {
     console.log(this.props.dayForecast);
     return (
       <div className="Content">
+        <h3 className="cardsSelect"><span className="weekButton active">Week</span></h3>
         <Week />
       </div>
     );

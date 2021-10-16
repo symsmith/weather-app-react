@@ -1,3 +1,12 @@
 .Content {
-  @apply bg-gray-100 flex-1 overflow-hidden;
+  @apply grid bg-gray-100 py-6 w-screen overflow-y-hidden;
+  grid-template-columns: 2.25rem 1fr 2.25rem;
+}
+
+.Content > * {
+  grid-column: 2 / -2;
+}
+
+.weekButton {
+  @apply font-bold border-b-2 border-black;
 }
