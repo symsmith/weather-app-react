@@ -1,11 +1,14 @@
 .Week {
-  @apply grid gap-3 overflow-y-scroll py-6;
+  @apply grid gap-3 overflow-y-scroll py-6
+        lg:flex lg:w-full lg:overflow-y-hidden;
   grid-template-columns: 1.5rem repeat(7, 9.5rem) 1.5rem;
   grid-column: 1 / -1 !important;
 }
 
-.Week:before,
-.Week:after {
-  content: '';
-  @apply h-48;
+@media (max-width: 1023px) {
+  .Week:before,
+  .Week:after {
+    content: '';
+    @apply h-48;
+  }
 }
