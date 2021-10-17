@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseHighlight from './BaseHighlight/BaseHighlight';
+import SunHighlight from './BaseHighlight/SunHighlight';
 import './Highlights.css';
 import apiKey from '../../../secrets';
 
@@ -60,11 +61,17 @@ class Highlights extends React.Component {
     else if (windDeg > 303.75 && windDeg <= 326.25) windDirection = 'NW';
     else if (windDeg > 326.25 && windDeg <= 348.75) windDirection = 'NNW';
 
+    /* Pressure commentary */
+    let pressure = weather.main.pressure;
+    let pressureCommentary = "Low";
+    if (pressure > 1009 && pressure <= 1017) pressureCommentary = "Average";
+    else if (pressure > 1017) pressureCommentary = "High";
+
     /* Humidity commentary */
     let humidity = weather.main.humidity;
     let humidityCommentary = "Low";
-    if (humidity > 33 && humidity <= 66) humidityCommentary = "Average";
-    else if (humidity > 66) humidityCommentary = "High";
+    if (humidity > 55 && humidity <= 65) humidityCommentary = "Average";
+    else if (humidity > 65) humidityCommentary = "High";
 
     /* Visibility commentary */
     let visibility = weather.visibility;
@@ -113,13 +120,13 @@ class Highlights extends React.Component {
           },
           {
             title: "Pressure",
-            value: Math.floor(weather.main.pressure),
+            value: Math.floor(pressure),
             unit: "hPa",
-            commentary: ""
+            commentary: pressureCommentary
           },
           {
             title: "Humidity",
-            value: Math.floor(weather.main.humidity),
+            value: Math.floor(humidity),
             unit: "%",
             commentary: humidityCommentary
           },
@@ -138,6 +145,7 @@ class Highlights extends React.Component {
         ];
         return (
           <div className="Highlights">
+            <SunHighlight sunrise={weather.sys.sunrise} sunset={weather.sys.sunset}/>
             {baseHighlights.map((highlight) =>
               <BaseHighlight key={highlight.title} data={highlight} />
             )}

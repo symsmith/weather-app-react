@@ -1,0 +1,16 @@
+.Highlights {
+  @apply grid gap-3 mt-6 justify-evenly;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media (min-width: 690px) {
+  .Highlights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1536px) {
+  .Highlights {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

@@ -1,0 +1,109 @@
+.BaseHighlight {
+  @apply bg-white rounded-2xl px-4 py-3 h-40 flex flex-col justify-between shadow-lg
+        lg:px-5 lg:py-4 lg:h-48;
+  min-width: 200px;
+}
+
+.sunTimes {
+  @apply my-auto;
+}
+
+.sunTime {
+  @apply flex mb-4;
+}
+
+.sunTime:last-child {
+  @apply mb-0;
+}
+
+.sunImg {
+  @apply w-9;
+}
+
+.sunHour {
+  @apply self-center ml-3 text-xl font-normal font-serif;
+}
+
+.highlightTitle {
+  @apply text-gray-400 text-base;
+}
+
+.highlightValue {
+  @apply text-5xl font-light my-4;
+}
+
+.highlightUnit {
+  @apply text-base font-normal font-sans tracking-normal ml-1;
+}
+
+.highlightCommentaryBox {
+  @apply flex items-center;
+}
+
+.compassIcon {
+  @apply w-7 inline leading-5 mr-2;
+}
+
+.compassNNE {
+  @apply transform rotate-22.5;
+}
+
+.compassNE {
+  @apply transform rotate-45;
+}
+
+.compassENE {
+  @apply transform rotate-67.5;
+}
+
+.compassE {
+  @apply transform rotate-90;
+}
+
+.compassESE {
+  @apply transform rotate-112.5;
+}
+
+.compassSE {
+  @apply transform rotate-135;
+}
+
+.compassSSE {
+  @apply transform rotate-157.5;
+}
+
+.compassS {
+  @apply transform rotate-180;
+}
+
+.compassSSW {
+  @apply transform -rotate-157.5;
+}
+
+.compassSW {
+  @apply transform -rotate-135;
+}
+
+.compassWSW {
+  @apply transform -rotate-112.5;
+}
+
+.compassW {
+  @apply transform -rotate-90;
+}
+
+.compassWNW {
+  @apply transform -rotate-67.5;
+}
+
+.compassNW {
+  @apply transform -rotate-45;
+}
+
+.compassNNW {
+  @apply transform -rotate-22.5;
+}
+
+.highlightCommentary {
+  @apply text-base font-normal;
+}
