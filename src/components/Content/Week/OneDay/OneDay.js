@@ -5,7 +5,6 @@ import './OneDay.css';
 class OneDay extends React.Component {
   render() {
     let dayForecast = this.props.dayForecast;
-    console.log(dayForecast);
     let date = new Date();
     date.setDate(date.getDate() + this.props.dayShift);
     let shortWeekDay = date.toLocaleString("en-US", { weekday: "short" });

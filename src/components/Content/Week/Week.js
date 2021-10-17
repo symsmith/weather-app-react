@@ -54,7 +54,7 @@ class Week extends React.Component {
       return (
         <div className="Week">
           {days.map((day) =>
-            <OneDay dayForecast={weekForecast.daily[day]} dayShift={day} />
+            <OneDay dayForecast={weekForecast.daily[day]} dayShift={day} key={day.toString()} />
           )}
         </div>
       );

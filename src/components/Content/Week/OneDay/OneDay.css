@@ -1,5 +1,5 @@
 .OneDay {
-  @apply bg-white flex flex-col justify-around w-auto h-48 rounded-2xl text-center p-4
+  @apply bg-white flex flex-col justify-around w-auto h-48 rounded-2xl text-center p-4 shadow-lg
         lg:w-full;
 }
 
