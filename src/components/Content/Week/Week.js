@@ -5,20 +5,19 @@ import apiKey from '../../../secrets';
 
 
 class Week extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       error: null,
       isLoaded: false,
       weekForecast: {}
     };
-    this.unitSystem = "metric";
     this.lat = "45.18410544710932";
     this.lon = "5.7225307355130255";
     this.url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this.lat
       + "&lon=" + this.lon
       + "&exclude=current,minutely,hourly,alerts"
-      + "&units=" + this.unitSystem
+      + "&units=" + this.props.unitSystem
       + "&appid=" + apiKey;
   }
 

@@ -15,7 +15,7 @@
 }
 
 .countrySearch {
-  @apply py-3 w-full text-base rounded-xl pl-10 focus:outline-none placeholder-black
+  @apply py-1 w-full text-base rounded-xl pl-10 focus:outline-none placeholder-black
         md:w-1/2
         lg:text-sm lg:w-full
         xl:text-base;

@@ -1,6 +1,6 @@
 .Content {
   @apply grid bg-gray-100 py-6 w-screen overflow-y-hidden
-        lg:block lg:px-8 lg:py-7;
+        lg:flex lg:flex-col lg:justify-between lg:px-8 lg:py-7;
   grid-template-columns: 2.25rem 1fr 2.25rem;
 }
 
@@ -14,5 +14,9 @@
 }
 
 .weekButton {
-  @apply font-bold border-b-2 border-black;
+  @apply font-medium border-b-2 border-black;
+}
+
+.highlightsTitle {
+  @apply font-medium text-lg;
 }

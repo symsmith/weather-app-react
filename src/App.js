@@ -3,6 +3,8 @@ import './App.css';
 import apiKey from './secrets';
 import Content from './components/Content/Content';
 import Sidebar from './components/Sidebar/Sidebar';
+
+
 class App extends React.Component {
   constructor() {
     super();
@@ -10,7 +12,7 @@ class App extends React.Component {
       error: null,
       isLoaded: false,
       currentWeather: {},
-      cityName: "Lille"
+      cityName: "New York"
     };
     this.unitSystem = "metric";
     this.url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.state.cityName
@@ -49,7 +51,6 @@ class App extends React.Component {
 
   render() {
     const { error, isLoaded, currentWeather } = this.state;
-    console.log(currentWeather);
     if (error) {
       return <div>Error: {error.message}</div>;
     }
@@ -60,7 +61,7 @@ class App extends React.Component {
       return (
         <div className="App">
           <Sidebar currentWeather={currentWeather} onSearch={this.handleSearch} />
-          <Content />
+          <Content currentWeather={currentWeather} unitSystem={this.unitSystem} />
         </div>
       )
     }
