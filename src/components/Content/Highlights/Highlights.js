@@ -13,7 +13,7 @@ class Highlights extends React.Component {
       isLoaded: false,
       airPollution: {}
     };
-    this.url = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + this.props.weather.coord.lat
+    this.url = "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + this.props.weather.coord.lat
       + "&lon=" + this.props.weather.coord.lon
       + "&appid=" + apiKey;
   }
