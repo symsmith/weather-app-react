@@ -12,17 +12,16 @@ class Week extends React.Component {
       isLoaded: false,
       weekForecast: {}
     };
-    this.lat = "45.18410544710932";
-    this.lon = "5.7225307355130255";
-    this.url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this.lat
-      + "&lon=" + this.lon
+  }
+
+  fetchWeek() {
+    let url = "https://pro.openweathermap.org/data/2.5/onecall?lat=" + this.props.lat
+      + "&lon=" + this.props.lon
       + "&exclude=current,minutely,hourly,alerts"
       + "&units=" + this.props.unitSystem
       + "&appid=" + apiKey;
-  }
 
-  componentDidMount() {
-    fetch(this.url)
+    fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
@@ -39,6 +38,15 @@ class Week extends React.Component {
         }
       )
   }
+
+  componentDidMount() {
+    this.fetchWeek();
+  }
+
+  componentDidUpdate(prevProps) {
+    this.fetchWeek();
+  }
+
 
   render() {
     const { error, isLoaded, weekForecast } = this.state;

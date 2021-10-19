@@ -11,17 +11,16 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      currentWeather: {},
-      cityName: "New York"
+      currentWeather: {}
     };
     this.unitSystem = "metric";
-    this.url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.state.cityName
-                + "&units=" + this.unitSystem
-                + "&appid=" + apiKey;
   }
 
-  fetchWeather() {
-    fetch(this.url)
+  fetchWeather(cityName) {
+    let url = "https://pro.openweathermap.org/data/2.5/weather?q=" + cityName
+      + "&units=" + this.unitSystem
+      + "&appid=" + apiKey;
+    fetch(url)
     .then(res => res.json())
     .then(
       (result) => {
@@ -40,13 +39,12 @@ class App extends React.Component {
   }
 
   handleSearch = (city) => {
-    this.setState({ cityName: city });
-    console.log("ICII" + this.state.cityName);
-    this.fetchWeather();
+    if (city !== "")
+      this.fetchWeather(city);
   }
 
   componentDidMount() {
-    this.fetchWeather();
+    this.fetchWeather("New York");
   }
 
   render() {
