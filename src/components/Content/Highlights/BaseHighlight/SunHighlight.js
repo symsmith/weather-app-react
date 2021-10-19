@@ -6,8 +6,11 @@ import sunsetImg from './sunset.png'
 
 class SunHighlight extends React.Component {
   render() {
-    let sunrise = new Date(this.props.sunrise * 1000);
-    let sunset = new Date(this.props.sunset * 1000);
+    let date = new Date();
+    let clientTimezone = date.getTimezoneOffset() * 60;
+    let weatherTimezone = this.props.timezone;
+    let sunrise = new Date((this.props.sunrise + weatherTimezone + clientTimezone) * 1000);
+    let sunset = new Date((this.props.sunset + weatherTimezone + clientTimezone) * 1000);
     let sunriseHours = sunrise.getHours().toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false

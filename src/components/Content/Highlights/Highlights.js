@@ -145,7 +145,7 @@ class Highlights extends React.Component {
         ];
         return (
           <div className="Highlights">
-            <SunHighlight sunrise={weather.sys.sunrise} sunset={weather.sys.sunset}/>
+            <SunHighlight timezone={weather.timezone} sunrise={weather.sys.sunrise} sunset={weather.sys.sunset}/>
             {baseHighlights.map((highlight) =>
               <BaseHighlight key={highlight.title} data={highlight} />
             )}
