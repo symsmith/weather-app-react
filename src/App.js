@@ -1,74 +1,54 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./App.css"
 import apiUtils from "./utils/apiCalls"
 import Content from "./components/Content/Content"
 import Sidebar from "./components/Sidebar/Sidebar"
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      error: null,
-      isLoaded: false,
-      currentWeather: {}
-    }
-    this.unitSystem = "metric"
+const App = () => {
+  const [error, setError] = useState(null)
+  const [currentWeather, setCurrentWeather] = useState({})
+  const unitSystem = "metric"
+
+  const fetchWeather = (location) => {
+    apiUtils
+      .fetchCurrentWeather(location, unitSystem)
+      .then((result) => {
+        console.log(result)
+        setCurrentWeather(result)
+      })
+      .catch((e) => {
+        setError({ message: "Could not retrieve data" })
+      })
   }
 
-  fetchWeather(location) {
-    apiUtils.fetchCurrentWeather(location, this.unitSystem).then(
-      (result) => {
-        this.setState({
-          isLoaded: true,
-          currentWeather: result
-        })
-      },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        })
-      }
-    )
+  const handleSearch = (city) => {
+    if (city !== "") fetchWeather({ city })
   }
 
-  handleSearch = (city) => {
-    if (city !== "") this.fetchWeather({ city })
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.fetchWeather({
+        fetchWeather({
           lat: position.coords.latitude,
           lon: position.coords.longitude
         })
       })
     } else {
-      this.fetchWeather({ city: "Paris" })
+      fetchWeather({ city: "Paris" })
     }
-  }
+  }, [])
 
-  render() {
-    const { error, isLoaded, currentWeather } = this.state
-    if (error) {
-      return <div>Error: {error.message}</div>
-    } else if (!isLoaded) {
-      return <div>Loading…</div>
-    } else {
-      return (
-        <div className="App">
-          <Sidebar
-            currentWeather={currentWeather}
-            onSearch={this.handleSearch}
-          />
-          <Content
-            currentWeather={currentWeather}
-            unitSystem={this.unitSystem}
-          />
-        </div>
-      )
-    }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  } else if (Object.keys(currentWeather).length === 0) {
+    return <div>Loading…</div>
+  } else {
+    return (
+      <div className="App">
+        <Sidebar currentWeather={currentWeather} onSearch={handleSearch} />
+        <Content currentWeather={currentWeather} unitSystem={unitSystem} />
+      </div>
+    )
   }
 }
 
