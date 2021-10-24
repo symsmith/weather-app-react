@@ -13,8 +13,12 @@
   }
 }
 
-.weekButton {
-  @apply font-medium border-b-2 border-black;
+.timespanButton {
+  @apply font-medium text-gray-400 mr-5 cursor-pointer transition duration-75 ease-in-out;
+}
+
+.timespanButtonActive {
+  @apply text-black border-b-2 border-black;
 }
 
 .highlightsTitle {

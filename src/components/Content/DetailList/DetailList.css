@@ -1,0 +1,27 @@
+.DailyList {
+  @apply grid gap-3 overflow-y-scroll py-6
+        lg:flex lg:w-full lg:overflow-y-visible lg:pb-2;
+  grid-template-columns: 1.5rem repeat(7, 9.5rem) 1.5rem;
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 1023px) {
+  .DailyList:before,
+  .DailyList:after {
+    content: "";
+    @apply h-48;
+  }
+}
+
+.HourlyList {
+  @apply grid gap-3 overflow-x-scroll overflow-y-visible py-6
+    lg:py-0;
+  grid-template-columns: 1.5rem repeat(24, 9.5rem) 1.5rem;
+  grid-column: 1 / -1 !important;
+}
+
+@media (min-width: 1024px) {
+  .HourlyList {
+    grid-template-columns: repeat(24, 9.5rem);
+  }
+}
