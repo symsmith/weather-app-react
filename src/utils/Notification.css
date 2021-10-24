@@ -1,0 +1,33 @@
+.Notification {
+  @apply fixed bottom-0 z-50 m-4 border-2 border-red-600 text-red-600 bg-white rounded-xl px-3 py-2
+  sm:left-1/2 sm:mx-0;
+  width: calc(100% - 2rem);
+  animation: appear 4s linear;
+}
+
+@media (min-width: 640px) {
+  .Notification {
+    left: 50%;
+    width: calc(400px - 2rem);
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.errorTitle {
+  @apply text-xl font-medium tracking-normal;
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import "./App.css"
 import apiUtils from "./utils/apiCalls"
+import Notification from "./utils/Notification"
 import Content from "./components/Content/Content"
 import Sidebar from "./components/Sidebar/Sidebar"
 
 const App = () => {
-  const [error, setError] = useState(null)
+  const [error, setError] = useState({})
   const [currentWeather, setCurrentWeather] = useState({})
   const unitSystem = "metric"
 
@@ -15,9 +16,11 @@ const App = () => {
       .then((result) => {
         console.log(result)
         setCurrentWeather(result)
+        setError({})
       })
       .catch((e) => {
-        setError({ message: "Could not retrieve data" })
+        setError({ message: `Could not find "${location.city}"` })
+        setTimeout(() => setError({}), 4000)
       })
   }
 
@@ -38,13 +41,14 @@ const App = () => {
     }
   }, [])
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  } else if (Object.keys(currentWeather).length === 0) {
+  if (Object.keys(currentWeather).length === 0) {
     return <div>Loading…</div>
   } else {
     return (
       <div className="App">
+        {Object.keys(error).length > 0 && (
+          <Notification message={error.message} />
+        )}
         <Sidebar currentWeather={currentWeather} onSearch={handleSearch} />
         <Content currentWeather={currentWeather} unitSystem={unitSystem} />
       </div>
