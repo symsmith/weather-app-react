@@ -1,8 +1,8 @@
 import React from "react"
+import apiUtils from "../../utils/apiCalls"
 import DetailList from "./DetailList/DetailList"
 import Highlights from "./Highlights/Highlights"
 import "./Content.css"
-import apiKey from "../../secrets"
 
 class Content extends React.Component {
   constructor(props) {
@@ -10,10 +10,7 @@ class Content extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      oldCoord: {
-        lat: this.props.currentWeather.coord.lat,
-        lon: this.props.currentWeather.coord.lon
-      },
+      oldCoord: this.props.currentWeather.coord,
       dailyForecast: {},
       hourlyForecast: {},
       weekActive: false
@@ -21,19 +18,14 @@ class Content extends React.Component {
   }
 
   fetchDetails() {
-    let url =
-      "https://pro.openweathermap.org/data/2.5/onecall?lat=" +
-      this.props.currentWeather.coord.lat +
-      "&lon=" +
-      this.props.currentWeather.coord.lon +
-      "&exclude=current,minutely,alerts" +
-      "&units=" +
-      this.props.unitSystem +
-      "&appid=" +
-      apiKey
-
-    fetch(url)
-      .then((res) => res.json())
+    apiUtils
+      .fetchForecast(
+        {
+          lat: this.props.currentWeather.coord.lat,
+          lon: this.props.currentWeather.coord.lon
+        },
+        this.props.unitSystem
+      )
       .then(
         (result) => {
           this.setState({
@@ -58,7 +50,7 @@ class Content extends React.Component {
 
   componentDidUpdate() {
     if (
-      this.props.currentWeather.coord.lat !== this.state.oldCoord.lat &&
+      this.props.currentWeather.coord.lat !== this.state.oldCoord.lat ||
       this.props.currentWeather.coord.lon !== this.state.oldCoord.lon
     ) {
       this.fetchDetails()
