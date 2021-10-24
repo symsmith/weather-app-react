@@ -3,10 +3,15 @@ import axios from "axios"
 const apiKey = process.env.REACT_APP_API_KEY
 const baseUrl = "https://pro.openweathermap.org/data/2.5/"
 
-const fetchCurrentWeather = (cityName, unitSystem) =>
-  axios
-    .get(`${baseUrl}weather?q=${cityName}&units=${unitSystem}&appid=${apiKey}`)
+const fetchCurrentWeather = (location, unitSystem) => {
+  const locationParam =
+    "city" in location
+      ? `weather?q=${location.city}`
+      : `weather?lat=${location.lat}&lon=${location.lon}`
+  return axios
+    .get(`${baseUrl}${locationParam}&units=${unitSystem}&appid=${apiKey}`)
     .then((result) => result.data)
+}
 
 const fetchForecast = (coords, unitSystem) =>
   axios

@@ -15,8 +15,8 @@ class App extends React.Component {
     this.unitSystem = "metric"
   }
 
-  fetchWeather(cityName) {
-    apiUtils.fetchCurrentWeather(cityName, this.unitSystem).then(
+  fetchWeather(location) {
+    apiUtils.fetchCurrentWeather(location, this.unitSystem).then(
       (result) => {
         this.setState({
           isLoaded: true,
@@ -33,11 +33,20 @@ class App extends React.Component {
   }
 
   handleSearch = (city) => {
-    if (city !== "") this.fetchWeather(city)
+    if (city !== "") this.fetchWeather({ city })
   }
 
   componentDidMount() {
-    this.fetchWeather("New York")
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.fetchWeather({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        })
+      })
+    } else {
+      this.fetchWeather({ city: "Paris" })
+    }
   }
 
   render() {
