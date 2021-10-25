@@ -4,27 +4,6 @@
         lg:w-3/12 lg:h-screen lg:px-8 lg:py-7;
 }
 
-.iconInput {
-  @apply relative;
-}
-
-.searchIcon {
-  @apply absolute inset-y-0 flex items-center;
-  left: 5px;
-  bottom: 1px;
-}
-
-.countrySearch {
-  @apply py-1 w-full text-base rounded-xl pl-7 focus:outline-none placeholder-black
-        md:w-1/2
-        lg:text-sm lg:w-full
-        xl:text-base;
-}
-
-.searchButton {
-  @apply hidden;
-}
-
 .currentWeatherIcon {
   @apply w-full max-w-xs m-auto;
 }

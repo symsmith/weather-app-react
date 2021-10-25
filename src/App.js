@@ -15,7 +15,6 @@ const App = () => {
       .fetchCurrentWeather(location, unitSystem)
       .then((result) => {
         setCurrentWeather(result)
-        setError({})
       })
       .catch((e) => {
         setError({ message: `Could not find "${location.city}"` })
@@ -25,6 +24,22 @@ const App = () => {
 
   const handleSearch = (city) => {
     if (city !== "") fetchWeather({ city })
+  }
+
+  const handleLocationClick = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        fetchWeather({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        })
+      },
+      () => {
+        fetchWeather({ city: "Paris" })
+        setError({ message: "Location cannot be retrieved" })
+        setTimeout(() => setError({}), 4000)
+      }
+    )
   }
 
   useEffect(() => {
@@ -47,7 +62,11 @@ const App = () => {
         {Object.keys(error).length > 0 && (
           <Notification message={error.message} />
         )}
-        <Sidebar currentWeather={currentWeather} onSearch={handleSearch} />
+        <Sidebar
+          currentWeather={currentWeather}
+          onSearch={handleSearch}
+          handleLocationClick={handleLocationClick}
+        />
         <Content currentWeather={currentWeather} unitSystem={unitSystem} />
       </div>
     )

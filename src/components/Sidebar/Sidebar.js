@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "./Sidebar.css"
 import SearchInput from "./SearchInput/SearchInput"
 
-const Sidebar = ({ onSearch, currentWeather }) => {
+const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
   const [cityName, setCityName] = useState("")
 
   const handleChange = (event) => {
@@ -42,6 +42,7 @@ const Sidebar = ({ onSearch, currentWeather }) => {
       <SearchInput
         handleSubmit={handleSubmit}
         handleChange={handleChange}
+        handleLocationClick={handleLocationClick}
         currentCityName={currentWeather.name}
         currentCountry={currentWeather.sys.country}
         inputValue={cityName}
