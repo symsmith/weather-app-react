@@ -20,16 +20,10 @@ const Content = ({ currentWeather, unitSystem }) => {
       .then((result) => {
         setDetailedForecast(result)
       })
-      .catch((e) => {
+      .catch(() => {
         console.log("Could not fetch details")
       })
   }
-
-  /* Fetch forecast details on component mount */
-  useEffect(() => {
-    fetchDetails()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   /* Fetch forecast details when coordinates in props change */
   useEffect(() => {
