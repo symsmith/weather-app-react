@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import "./Sidebar.css"
-import { getName, registerLocale } from "i18n-iso-countries"
-registerLocale(require("i18n-iso-countries/langs/en.json"))
+import SearchInput from "./SearchInput/SearchInput"
 
 const Sidebar = ({ onSearch, currentWeather }) => {
   const [cityName, setCityName] = useState("")
@@ -40,34 +39,14 @@ const Sidebar = ({ onSearch, currentWeather }) => {
 
   return (
     <div className="Sidebar">
-      <form onSubmit={handleSubmit} className="searchForm">
-        <div className="iconInput">
-          <span className="searchIcon">
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              className="w-5 h-5"
-            >
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-          </span>
-          <input
-            type="text"
-            className="countrySearch"
-            placeholder={
-              currentWeather.name +
-              ", " +
-              getName(currentWeather.sys.country, "en", { select: "alias" })
-            }
-            value={cityName}
-            onChange={handleChange}
-          />
-        </div>
-      </form>
+      <SearchInput
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        currentCityName={currentWeather.name}
+        currentCountry={currentWeather.sys.country}
+        inputValue={cityName}
+      />
+
       <img
         className="currentWeatherIcon"
         src={
@@ -77,6 +56,7 @@ const Sidebar = ({ onSearch, currentWeather }) => {
         }
         alt={weatherDescription}
       />
+
       <h1>
         {temp}°
         {temp !== feelsLike ? (
@@ -87,6 +67,7 @@ const Sidebar = ({ onSearch, currentWeather }) => {
           ""
         )}
       </h1>
+
       <div className="alignment">
         <h2>
           {weekDay},{" "}
@@ -94,7 +75,9 @@ const Sidebar = ({ onSearch, currentWeather }) => {
             {hours}:{minutes}
           </span>
         </h2>
+
         <hr />
+
         <p className="weatherDescription">{weatherDescription}</p>
       </div>
     </div>
