@@ -1,31 +1,29 @@
 import React from "react"
 import "./Highlight.css"
-import compass from "./compass.svg"
+import compass from "./../../../../assets/compass.svg"
 
-class BaseHighlight extends React.Component {
-  render() {
-    return (
-      <div className="BaseHighlight">
-        <h3 className="highlightTitle">{this.props.data.title}</h3>
-        <h1 className="highlightValue">
-          {this.props.data.value}
-          <span className="highlightUnit">{this.props.data.unit}</span>
-        </h1>
-        <div className="highlightCommentaryBox">
-          {this.props.data.title === "Wind Status" ? (
-            <img
-              src={compass}
-              alt="compass icon"
-              className={"compass" + this.props.data.comment + " compassIcon"}
-            />
-          ) : (
-            ""
-          )}
-          <p className="highlightCommentary">{this.props.data.comment}</p>
-        </div>
+const BaseHighlight = ({ data }) => {
+  return (
+    <div className="BaseHighlight">
+      <h3 className="highlightTitle">{data.title}</h3>
+      <h1 className="highlightValue">
+        {data.value}
+        <span className="highlightUnit">{data.unit}</span>
+      </h1>
+      <div className="highlightCommentaryBox">
+        {data.title === "Wind Status" ? (
+          <img
+            src={compass}
+            alt="compass icon"
+            className={"compass" + data.comment + " compassIcon"}
+          />
+        ) : (
+          ""
+        )}
+        <p className="highlightCommentary">{data.comment}</p>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default BaseHighlight
