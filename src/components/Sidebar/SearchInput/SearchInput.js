@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { getName, registerLocale } from "i18n-iso-countries"
 registerLocale(require("i18n-iso-countries/langs/en.json"))
 
@@ -9,7 +9,6 @@ const SearchInput = ({
   currentCountry,
   inputValue
 }) => {
-  const [inputClicked, setInputClicked] = useState(false)
   return (
     <form onSubmit={handleSubmit} className="searchForm">
       <div className="iconInput">

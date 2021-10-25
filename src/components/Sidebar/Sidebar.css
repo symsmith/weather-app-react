@@ -9,13 +9,13 @@
 }
 
 .searchIcon {
-  @apply absolute inset-y-0 flex items-center pl-2;
+  @apply absolute inset-y-0 flex items-center;
   left: 5px;
   bottom: 1px;
 }
 
 .countrySearch {
-  @apply py-1 w-full text-base rounded-xl pl-10 focus:outline-none placeholder-black
+  @apply py-1 w-full text-base rounded-xl pl-7 focus:outline-none placeholder-black
         md:w-1/2
         lg:text-sm lg:w-full
         xl:text-base;
