@@ -28,16 +28,15 @@ const App = () => {
   }
 
   useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
         fetchWeather({
           lat: position.coords.latitude,
           lon: position.coords.longitude
         })
-      })
-    } else {
-      fetchWeather({ city: "Paris" })
-    }
+      },
+      () => fetchWeather({ city: "Paris" })
+    )
   }, [])
 
   if (Object.keys(currentWeather).length === 0) {
