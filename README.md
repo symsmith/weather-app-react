@@ -62,7 +62,7 @@ The `src` directory contains the `index.js` file, which is the entry point for t
     │   └── Highlights              "Highlights" section
     │       └── BaseHighlight
     │           ├── BaseHighlight     Base highlight card
-    │           └── SunHighligt       Specific sunrise/set card
+    │           └── SunHighlight       Specific sunrise/set card
     └── Sidebar                   Left side of the app
         └── SearchInput             City search input
 ```
