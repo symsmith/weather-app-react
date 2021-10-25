@@ -47,8 +47,6 @@ The app offers a search input to search any city. If the city cannot be found, t
 
 ### Architecture
 
-#### Components
-
 The `src` directory contains the `index.js` file, which is the entry point for the app. This file calls the `App` component, which contains the logic for the geolocation and fetching the current weather data. The component architecture is then as follows:
 
 ```
@@ -72,3 +70,5 @@ The other directories are `assets`, which contain the sunrise, sunset and "compa
 ### Design
 
 The CSS part is done using [Tailwind CSS](https://tailwindcss.com/) to speed up development. The app uses Flexbox and CSS Grids to easily allow a completely responsive experience.
+
+The fonts used are [Poppins](https://fonts.google.com/specimen/Poppins) and [Inter](https://fonts.google.com/specimen/Inter), served by [Google Fonts](https://fonts.google.com/).
