@@ -1,16 +1,11 @@
 .Content {
   @apply grid bg-gray-100 py-6 w-screen overflow-y-hidden
-        lg:flex lg:flex-col lg:justify-between lg:px-8 lg:py-7;
+        lg:py-7;
   grid-template-columns: 2.25rem 1fr 2.25rem;
 }
 
-@media (max-width: 1023px) {
-  .Content {
-    grid-template-columns: 2.25rem 1fr 2.25rem;
-  }
-  .Content > * {
-    grid-column: 2 / -2;
-  }
+.Content > * {
+  grid-column: 2 / -2;
 }
 
 .timespanButton {
