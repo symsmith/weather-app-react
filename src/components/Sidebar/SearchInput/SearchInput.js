@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { getName, registerLocale } from "i18n-iso-countries"
 registerLocale(require("i18n-iso-countries/langs/en.json"))
 
@@ -9,6 +9,7 @@ const SearchInput = ({
   currentCountry,
   inputValue
 }) => {
+  const [inputClicked, setInputClicked] = useState(false)
   return (
     <form onSubmit={handleSubmit} className="searchForm">
       <div className="iconInput">
@@ -33,6 +34,13 @@ const SearchInput = ({
             currentCityName +
             ", " +
             getName(currentCountry, "en", { select: "alias" })
+          }
+          onFocus={(e) => (e.target.placeholder = "Search a city...")}
+          onBlur={(e) =>
+            (e.target.placeholder =
+              currentCityName +
+              ", " +
+              getName(currentCountry, "en", { select: "alias" }))
           }
           value={inputValue}
           onChange={handleChange}
