@@ -14,7 +14,6 @@ const App = () => {
     apiUtils
       .fetchCurrentWeather(location, unitSystem)
       .then((result) => {
-        console.log(result)
         setCurrentWeather(result)
         setError({})
       })
