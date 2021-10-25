@@ -28,3 +28,22 @@
   content: "";
   @apply h-48;
 }
+
+@media (min-width: 1024px) {
+  .HourlyList {
+    --scrollbarBG: #f3f4f6;
+    --thumbBG: rgba(156, 163, 175, 0.3);
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  .HourlyList::-webkit-scrollbar {
+    width: 1px;
+  }
+  .HourlyList::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  .HourlyList::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 20px;
+    border: 3px solid var(--scrollbarBG);
+  }
+}
