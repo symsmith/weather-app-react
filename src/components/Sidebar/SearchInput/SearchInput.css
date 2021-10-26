@@ -3,7 +3,7 @@
 }
 
 .locationIcon {
-  @apply absolute inset-y-0 w-4 h-4;
+  @apply absolute inset-y-0 w-4 h-4 cursor-pointer;
   left: 5px;
   top: 7px;
 }
@@ -15,7 +15,7 @@
 }
 
 .searchIcon {
-  @apply absolute inset-y-0 w-5 h-5;
+  @apply absolute inline inset-y-0 w-5 h-5;
   right: 5px;
   top: 5px;
 }
