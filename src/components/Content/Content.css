@@ -1,5 +1,5 @@
 .Content {
-  @apply grid bg-gray-100 py-6 w-screen overflow-y-hidden
+  @apply grid bg-gray-100 py-6 w-screen
         lg:py-7;
   grid-template-columns: 2.25rem 1fr 2.25rem;
 }

@@ -1,5 +1,5 @@
 .App {
   @apply font-sans text-lg font-light
-        lg:flex lg:text-base lg:h-screen lg:overflow-y-hidden
+        lg:flex lg:text-base
         xl:text-lg;
 }
