@@ -51,12 +51,29 @@ const pollutionComment = (pollutionValue) => {
   }
 }
 
+const localStorageName = "favoriteCities"
+
+const getFavoriteCities = () => {
+  return JSON.parse(localStorage.getItem(localStorageName))
+}
+
+const setFavoriteCities = (favoriteCities) => {
+  localStorage.setItem(localStorageName, JSON.stringify(favoriteCities))
+}
+
+const isCityFavorite = (city) => {
+  return getFavoriteCities().includes(city)
+}
+
 const functions = {
   windDirection,
   pressureComment,
   humidityComment,
   visibilityComment,
-  pollutionComment
+  pollutionComment,
+  getFavoriteCities,
+  setFavoriteCities,
+  isCityFavorite
 }
 
 export default functions

@@ -1,9 +1,20 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import functions from "../../utils/functions"
 import "./Sidebar.css"
 import SearchInput from "./SearchInput/SearchInput"
 
 const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
   const [cityName, setCityName] = useState("")
+  const [cityIsFavorite, setCityIsFavorite] = useState(false)
+  const [changed, setChanged] = useState(false)
+
+  useEffect(() => {
+    if (functions.getFavoriteCities()) {
+      setCityIsFavorite(functions.isCityFavorite(currentWeather.name))
+    } else {
+      functions.setFavoriteCities([])
+    }
+  }, [currentWeather])
 
   const handleChange = (event) => {
     setCityName(event.target.value)
@@ -15,6 +26,23 @@ const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
     setCityName("")
     /* Remove focus on input */
     event.target[0].blur()
+  }
+
+  const handleFavoriteCityClick = () => {
+    const newFavoriteCity = currentWeather.name
+    if (!cityIsFavorite) {
+      const favoriteCities = [...functions.getFavoriteCities(), newFavoriteCity]
+      functions.setFavoriteCities(favoriteCities)
+      setCityIsFavorite(true)
+    } else {
+      const favoriteCities = functions
+        .getFavoriteCities()
+        .filter((city) => city !== newFavoriteCity)
+      functions.setFavoriteCities(favoriteCities)
+      setCityIsFavorite(false)
+    }
+    setChanged(true)
+    setTimeout(() => setChanged(false), 1000)
   }
 
   const temp = Math.round(currentWeather.main.temp)
@@ -47,6 +75,18 @@ const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
         currentCountry={currentWeather.sys.country}
         inputValue={cityName}
       />
+
+      <p className="addFavorite" onClick={handleFavoriteCityClick}>
+        {cityIsFavorite ? "Remove from favorites" : "Add to favorites"}
+        <span
+          className={
+            "favoriteAddedMessage" +
+            (changed ? " messageShown" : " messageHidden")
+          }
+        >
+          done!
+        </span>
+      </p>
 
       <img
         className="currentWeatherIcon"

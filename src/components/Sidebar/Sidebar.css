@@ -4,6 +4,22 @@
         lg:w-3/12 lg:h-screen lg:px-8 lg:py-7;
 }
 
+.addFavorite {
+  @apply text-center text-sm font-normal text-gray-400 cursor-pointer transition duration-200 hover:text-black md:w-52 lg:w-full lg:text-xs xl:text-sm;
+}
+
+.messageHidden {
+  @apply block opacity-0 text-gray-400 transition duration-200;
+}
+
+.messageShown {
+  @apply block visible text-gray-400 transition duration-200;
+}
+
+.addFavorite:hover > .messageShown {
+  @apply text-gray-400;
+}
+
 .currentWeatherIcon {
   @apply w-full max-w-xs m-auto;
 }
