@@ -13,15 +13,15 @@
 }
 
 .selectTitle {
-  @apply cursor-pointer;
+  @apply cursor-pointer font-medium text-gray-400;
 }
 
 .separator {
-  @apply mx-3 font-medium text-gray-400;
+  @apply mx-3;
 }
 
 .selectButton {
-  @apply font-medium text-gray-400 transition duration-150 ease-in-out;
+  @apply transition duration-150 ease-in-out;
 }
 
 .selectButtonActive {
