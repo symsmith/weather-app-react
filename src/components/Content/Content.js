@@ -4,7 +4,7 @@ import DetailList from "./DetailList/DetailList"
 import Highlights from "./Highlights/Highlights"
 import "./Content.css"
 
-const Content = ({ currentWeather, unitSystem }) => {
+const Content = ({ currentWeather, unitSystem, setUnitSystem }) => {
   const [detailedForecast, setDetailedForecast] = useState({})
   const [dailyActive, setDailyActive] = useState(false)
 
@@ -38,24 +38,53 @@ const Content = ({ currentWeather, unitSystem }) => {
     const dailyForecast = detailedForecast.daily
     return (
       <div className="Content">
-        <h3 className="cardsSelect">
-          <span
-            className={
-              "timespanButton" + (!dailyActive ? " timespanButtonActive" : "")
-            }
-            onClick={() => setDailyActive(false)}
+        <div className="buttonsBar">
+          <h3
+            className="selectTitle"
+            onClick={() => setDailyActive(!dailyActive)}
           >
-            Today
-          </span>
-          <span
-            className={
-              "timespanButton" + (dailyActive ? " timespanButtonActive" : "")
-            }
-            onClick={() => setDailyActive(true)}
+            <span
+              className={
+                "selectButton" + (!dailyActive ? " selectButtonActive" : "")
+              }
+            >
+              Today
+            </span>
+            <span className="separator">/</span>
+            <span
+              className={
+                "selectButton" + (dailyActive ? " selectButtonActive" : "")
+              }
+            >
+              Week
+            </span>
+          </h3>
+          <h3
+            className="selectTitle"
+            onClick={() => {
+              if (unitSystem === "metric") setUnitSystem("imperial")
+              else setUnitSystem("metric")
+            }}
           >
-            Week
-          </span>
-        </h3>
+            <span
+              className={
+                "selectButton" +
+                (unitSystem === "metric" ? " selectButtonActive" : "")
+              }
+            >
+              C
+            </span>
+            <span className="separator">/</span>
+            <span
+              className={
+                "selectButton" +
+                (unitSystem === "imperial" ? " selectButtonActive" : "")
+              }
+            >
+              F
+            </span>
+          </h3>
+        </div>
         {dailyActive ? (
           <DetailList
             type="daily"

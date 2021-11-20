@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import "./App.css"
 import apiUtils from "./utils/apiCalls"
 import Notification from "./utils/Notification"
@@ -8,19 +8,22 @@ import Sidebar from "./components/Sidebar/Sidebar"
 const App = () => {
   const [error, setError] = useState({})
   const [currentWeather, setCurrentWeather] = useState({})
-  const unitSystem = "metric"
+  const [unitSystem, setUnitSystem] = useState("metric")
 
-  const fetchWeather = (location) => {
-    apiUtils
-      .fetchCurrentWeather(location, unitSystem)
-      .then((result) => {
-        setCurrentWeather(result)
-      })
-      .catch((e) => {
-        setError({ message: `Could not find "${location.city}"` })
-        setTimeout(() => setError({}), 4000)
-      })
-  }
+  const fetchWeather = useCallback(
+    (location) => {
+      apiUtils
+        .fetchCurrentWeather(location, unitSystem)
+        .then((result) => {
+          setCurrentWeather(result)
+        })
+        .catch((e) => {
+          setError({ message: `Could not find "${location.city}"` })
+          setTimeout(() => setError({}), 4000)
+        })
+    },
+    [unitSystem]
+  )
 
   const handleSearch = (city) => {
     if (city !== "") fetchWeather({ city })
@@ -52,7 +55,7 @@ const App = () => {
       },
       () => fetchWeather({ city: "Paris" })
     )
-  }, [])
+  }, [fetchWeather])
 
   if (Object.keys(currentWeather).length === 0) {
     return <div>Loading…</div>
@@ -67,7 +70,11 @@ const App = () => {
           onSearch={handleSearch}
           handleLocationClick={handleLocationClick}
         />
-        <Content currentWeather={currentWeather} unitSystem={unitSystem} />
+        <Content
+          currentWeather={currentWeather}
+          unitSystem={unitSystem}
+          setUnitSystem={setUnitSystem}
+        />
       </div>
     )
   }
