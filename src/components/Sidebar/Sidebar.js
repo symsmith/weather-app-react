@@ -53,11 +53,11 @@ const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
   const weekDay = date.toLocaleString("en-US", { weekday: "long" })
   const hours = date.getHours().toLocaleString("en-US", {
     minimumIntegerDigits: 2,
-    useGrouping: false
+    useGrouping: false,
   })
   const minutes = date.getMinutes().toLocaleString("en-US", {
     minimumIntegerDigits: 2,
-    useGrouping: false
+    useGrouping: false,
   })
 
   /* Capitalize the first letter */
@@ -75,18 +75,6 @@ const Sidebar = ({ onSearch, currentWeather, handleLocationClick }) => {
         currentCountry={currentWeather.sys.country}
         inputValue={cityName}
       />
-
-      <p className="addFavorite" onClick={handleFavoriteCityClick}>
-        {cityIsFavorite ? "Remove from favorites" : "Add to favorites"}
-        <span
-          className={
-            "favoriteAddedMessage" +
-            (changed ? " messageShown" : " messageHidden")
-          }
-        >
-          done!
-        </span>
-      </p>
 
       <img
         className="currentWeatherIcon"

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const apiKey = process.env.REACT_APP_API_KEY
-const baseUrl = "https://pro.openweathermap.org/data/2.5/"
+const baseUrl = "https://api.openweathermap.org/data/2.5/"
 
 const fetchCurrentWeather = (location, unitSystem) => {
   const locationParam =
